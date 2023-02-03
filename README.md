@@ -13,7 +13,7 @@ This is a small project where I try my hand at Flask (python backend for web app
 
     sudo apt-get install python3-pip nginx  
 
-**Configure Nginx**
+**Configure Nginx**  
 My nginx config file `/etc/nginx/sites-enabled/default` looks like this:
 Obviously, replace `your.domain.or.ip.here` with your actual domain or IP.
 
