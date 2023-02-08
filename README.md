@@ -14,6 +14,7 @@ This is a small project where I try my hand at Flask (python backend for web app
     sudo apt-get install python3-pip nginx  
     
 **Clone the repo**  
+
     git clone https://github.com/CWright2022/iot_thermal_printer  
 
 **Configure Nginx**  
