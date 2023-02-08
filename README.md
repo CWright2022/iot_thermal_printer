@@ -59,13 +59,21 @@ Obviously, replace `/wherever/you/cloned/the/repo` with the path to `app.py`.
 
     sudo systemctl daemon-reload
     sudo systemctl enable gunicorn.service
-    sudo systemctl start gunicorn.service
+    sudo systemctl start gunicorn.service  
+    
+**Add the following to your crontab (use crontab -e to edit your crontab)**  
+0 * * * * echo "0" > /wherever/you/cloned/this/hourly_count.txt  
+This allows the hourly count to reset once per hour, on the hour.  
+
 # Security
 **PLEASE CHANGE THE DEFAULT PASSWORD FOR THE PI USER!!!**  
 Run `passwd` on the Pi and follow the prompts.  
 
 **DO NOT EXPOSE PORT 22 TO THE INTERNET!!!**  
-The web server is plain HTTP and runs on port 80. It is OK to expose port 80 to the internet to let your friends send you messages, but DO NOT FORWARD PORT 22! For those unaware, this is the port that SSH runs on - by exposing this you are going to get a lot of chinese bots trying to log in with credentials like `admin:password` or `pi:raspberry`.  
+The web server is plain HTTP (not HTTPS by default - no encryption!) and runs on port 80. It is OK to expose port 80 to the internet to let your friends send you messages, but DO NOT FORWARD PORT 22! For those unaware, this is the port that SSH runs on - by exposing this you are going to get a lot of chinese bots trying to log in with credentials like `admin:password` or `pi:raspberry`.  
+
+**THIS SERVER IS HTTP BY DEFAULT!**  
+By default, this server uses regular ol' HTTP over port 80. While this isn't inherently insecure, especially not for a hobby project, keep in mind that there is no encryption going on between client and server. Anyone with Wireshark and a box in between you and the server can sniff your traffic. I'm not overly concerned with this because it's just silly messages, just something to keep in mind.  
 
 **I MAKE NO GUARANTEES TO THE SECURITY OF THIS WEB APP**  
 Being a Computing Security major, I have tried my best to make this web app secure. However, I am just a first year. There very well may be an XSS exploit or other vulnerability that I have not caught yet. As is such, I make no guarantees to the security of this application and assume no responsibility if your Pi is hacked as a result of running my app.
