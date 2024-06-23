@@ -72,6 +72,8 @@ def name():
         #trim message if needed
         if len(message) > 280:
             message=message[:280]
+        if len(name) > 28:
+            name=name[:28]
         log_message(name, message)
         print_message(name,message)
         increment_counts()
